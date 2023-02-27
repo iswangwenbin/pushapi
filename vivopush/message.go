@@ -37,6 +37,7 @@ type SendReq struct {
 	Extra           map[string]string `json:"extra,omitempty"`           // 高级特性（详见目录：一.公共——5.高级特性 extra）
 	RequestId       string            `json:"requestId,omitempty"`       // 用户请求唯一标识 最大64字符
 	PushMode        int               `json:"pushMode,omitempty"`        // 推送模式 0：正式推送；1：测试推送，不填默认为0 备注： 1.测试推送，只能给web界面录入的测试用户推送；审核中应用，只能用测试推送 2.若未设置pushMode=1进行测试，文案相同时，将被当做重复推送的运营消息被去重
+	NotifyId        int               `json:"notifyId,omitempty"`        // 每条消息在通知显示时的唯一标识。不携带时，vpush自动为给每条消息生成一个唯一标识；当不同的消息设置为同一个notifyId，到达设备的新消息将覆盖旧消息展示在设备通知栏中。值范围：1~2147483647。
 }
 
 type SendRes struct {
